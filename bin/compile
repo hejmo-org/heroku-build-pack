@@ -13,6 +13,9 @@ rm -rf modules/file-storage
 rm -rf modules/test-utils
 echo "Done deleting modules"
 
+echo "Dirs in dir modules:"
+ls modules/
+
 
 echo "################################################"
 echo "Running Hejmos build pack - compile script end"
