@@ -16,6 +16,9 @@ echo "Done deleting modules"
 echo "Dirs in dir modules:"
 ls modules/
 
+echo "ls"
+ls
+
 
 echo "################################################"
 echo "Running Hejmos build pack - compile script end"
