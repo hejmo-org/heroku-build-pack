@@ -26,6 +26,10 @@ echo ".. ls"
 cd ..
 ls 
 
+echo ".. ls"
+cd ..
+ls 
+
 
 echo "################################################"
 echo "Running Hejmos build pack - compile script end"
