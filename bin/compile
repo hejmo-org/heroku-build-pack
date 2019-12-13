@@ -19,6 +19,13 @@ ls modules/
 echo "ls"
 ls
 
+echo "pwd"
+pwd
+
+echo ".. ls"
+cd ..
+ls 
+
 
 echo "################################################"
 echo "Running Hejmos build pack - compile script end"
