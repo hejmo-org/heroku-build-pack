@@ -3,21 +3,26 @@ echo "################################################"
 echo "Running Hejmos build pack - compile script start"
 echo "################################################"
 
-echo "Deleting modules not needed run-time. This to reduce slug size."
-rm -rf modules/calculations
-rm -rf modules/common
-rm -rf modules/config
-rm -rf modules/data
-rm -rf modules/data-objects
-rm -rf modules/file-storage
-rm -rf modules/test-utils
-echo "Done deleting modules"
-
 echo "Build dir"
 BUILD_DIR=$1
-echo $1
 echo $BUILD_DIR
 ls $BUILD_DIR
+
+echo "No quotes"
+ls $BUILD_DIR/modules/calculations
+echo "With quotes"
+ls "$BUILD_DIR/modules/calculations"
+
+echo "Deleting modules not needed run-time. This to reduce slug size."
+rm -rf "$BUILD_DIR/modules/calculations"
+rm -rf "$BUILD_DIR/modules/modules/common"
+rm -rf "$BUILD_DIR/modules/modules/config"
+rm -rf "$BUILD_DIR/modules/modules/data"
+rm -rf "$BUILD_DIR/modules/modules/data-objects"
+rm -rf "$BUILD_DIR/modules/modules/file-storage"
+rm -rf "$BUILD_DIR/modules/modules/test-utils"
+echo "Done deleting modules"
+
 
 
 echo "Dirs in dir modules:"
