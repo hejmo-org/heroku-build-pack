@@ -17,6 +17,7 @@ echo "Build dir"
 BUILD_DIR=$1
 echo $1
 echo $BUILD_DIR
+ls $BUILD_DIR
 
 
 echo "Dirs in dir modules:"
