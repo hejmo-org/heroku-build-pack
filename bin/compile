@@ -3,39 +3,38 @@ echo "################################################"
 echo "Running Hejmos build pack - compile script start"
 echo "################################################"
 
-echo "Build dir path"
-echo $BUILD_DIR
-echo ""
-
-echo "ls build dir"
+echo "### Assigning build path"
 BUILD_DIR=$1
-ls $BUILD_DIR
-echo ""
 
-echo "ls calc"
-ls $BUILD_DIR/modules/calculations
-echo ""
+echo "## Build dir path"
+echo $BUILD_DIR
+echo 
 
-echo "ls modules"
+echo "### ls modules"
 ls $BUILD_DIR/modules
-echo ""
+echo 
 
-''
-echo "Deleting modules not needed run-time. This to reduce slug size."
+echo "### Deleting modules not needed run-time. This to reduce slug size."
 rm -rf "$BUILD_DIR/modules/calculations"
 rm -rf "$BUILD_DIR/modules/common"
 rm -rf "$BUILD_DIR/modules/config"
 rm -rf "$BUILD_DIR/modules/data"
 rm -rf "$BUILD_DIR/modules/data-objects"
 rm -rf "$BUILD_DIR/modules/file-storage"
+rm -rf "$BUILD_DIR/modules/interfaces"
 rm -rf "$BUILD_DIR/modules/test-utils"
-echo "Done deleting modules"
-echo ""
+rm -rf "$BUILD_DIR/target"
+rm -rf "$BUILD_DIR/modules/target"
+rm -rf "$BUILD_DIR/web-apps/target"
 
 
-echo "ls modules"
+echo "### Done deleting modules"
+echo 
+
+
+echo "### ls modules"
 ls $BUILD_DIR/modules
-echo ""
+echo 
 
 
 echo "################################################"
