@@ -8,11 +8,9 @@ BUILD_DIR=$1
 
 echo "## Build dir path"
 echo $BUILD_DIR
-echo 
 
 echo "### ls modules"
 ls $BUILD_DIR/modules
-echo 
 
 echo "### Deleting modules and dirs not needed run-time. This to reduce slug size."
 rm -rf "$BUILD_DIR/modules/calculations"
@@ -25,17 +23,20 @@ rm -rf "$BUILD_DIR/modules/interfaces"
 rm -rf "$BUILD_DIR/modules/test-utils"
 rm -rf "$BUILD_DIR/target"
 rm -rf "$BUILD_DIR/modules/target"
-rm -rf "$BUILD_DIR/web-apps/target"
-rm -rf "$BUILD_DIR/web-apps/web-app-common"
+rm -rf "$BUILD_DIR/modules/web-apps/target"
+rm -rf "$BUILD_DIR/modules/web-apps/web-app-common"
 
 
 echo "### Done deleting modules"
-echo 
 
 
 echo "### ls modules"
 ls $BUILD_DIR/modules
+
+echo "### ls modules/web-apps"
+ls $BUILD_DIR/modules/web-apps
 echo 
+
 
 
 echo "################################################"
