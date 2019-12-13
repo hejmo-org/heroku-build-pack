@@ -8,11 +8,13 @@ BUILD_DIR=$1
 echo $BUILD_DIR
 ls $BUILD_DIR
 
-echo "No quotes"
+echo "ls clac"
 ls $BUILD_DIR/modules/calculations
-echo "With quotes"
-ls "$BUILD_DIR/modules/calculations"
 
+echo "ls modules"
+ls $BUILD_DIR/modules
+
+''
 echo "Deleting modules not needed run-time. This to reduce slug size."
 rm -rf "$BUILD_DIR/modules/calculations"
 rm -rf "$BUILD_DIR/modules/modules/common"
@@ -24,23 +26,8 @@ rm -rf "$BUILD_DIR/modules/modules/test-utils"
 echo "Done deleting modules"
 
 
-
-echo "Dirs in dir modules:"
-ls modules/
-
-echo "ls"
-ls
-
-echo "pwd"
-pwd
-
-echo ".. ls"
-cd ..
-ls 
-
-echo ".. ls"
-cd ..
-ls 
+echo "ls modules"
+ls $BUILD_DIR/modules
 
 
 echo "################################################"
