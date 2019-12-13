@@ -13,6 +13,12 @@ rm -rf modules/file-storage
 rm -rf modules/test-utils
 echo "Done deleting modules"
 
+echo "Build dir"
+BUILD_DIR=$1
+echo $1
+echo $BUILD_DIR
+
+
 echo "Dirs in dir modules:"
 ls modules/
 
