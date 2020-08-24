@@ -24,8 +24,6 @@ rm -rf "$BUILD_DIR/modules/test-utils"
 rm -rf "$BUILD_DIR/target"
 rm -rf "$BUILD_DIR/modules/target"
 rm -rf "$BUILD_DIR/modules/web-apps/target"
-rm -rf "$BUILD_DIR/modules/web-apps/web-app-common"
-
 
 echo "### Done deleting modules"
 
