@@ -26,18 +26,17 @@ rm -rf "$BUILD_DIR/modules/target"
 rm -rf "$BUILD_DIR/modules/web-apps/target"
 echo "### Done deleting modules"
 
-echo "### Deleting files that should not be on production. This for security"
+echo "### Deleting files that should not be on production. This for security."
 # Delete JavaScript test files
-rm -rf "$BUILD_DIR/modules/web-apps/front-office/src/main/resources/web/java_script_tests"
-rm -rf "$BUILD_DIR/modules/web-apps/glimminge/src/main/resources/web/java_script_tests"
-rm -rf "$BUILD_DIR/modules/web-apps/mandarfen/src/main/resources/web/java_script_tests"
-rm -rf "$BUILD_DIR/modules/web-apps/sys-admin/src/main/resources/web/java_script_tests"
-#rm -rf "$BUILD_DIR/modules/web-apps/www/src/main/resources/web/java_script_tests"
+rm -rf "$BUILD_DIR/modules/web-apps/front-office/target/classes/web/java_script_tests"
+rm -rf "$BUILD_DIR/modules/web-apps/glimminge/target/classes/web/java_script_tests"
+rm -rf "$BUILD_DIR/modules/web-apps/mandarfen/target/classes/web/java_script_tests"
+rm -rf "$BUILD_DIR/modules/web-apps/sys-admin/target/classes/web/java_script_tests"
 rm -rf "$BUILD_DIR/modules/web-apps/www/target/classes/web/java_script_tests"
 
 # Delete JavaScript test lib
-rm -rf "$BUILD_DIR/modules/web-apps/www/src/main/resources/web/shared/green_tea"
-echo "### Done deleting files that should not be on production"
+rm -rf "$BUILD_DIR/modules/web-apps/www/target/classes/web/shared/green_tea"
+echo "### Done deleting files that should not be on production."
 
 
 
