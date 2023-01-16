@@ -3,16 +3,77 @@ echo "################################################"
 echo "Running Hejmos build pack - compile script start"
 echo "################################################"
 
-echo "### Assigning build path"
+# Get the build path
 BUILD_DIR=$1
+# Get the directory that contain configuration variables
+ENV_DIR=$3
 
-echo "## Build dir path"
-echo $BUILD_DIR
+# ENV_DIR is a directory that contains a file for each of the application’s configuration variables.
+# The name of the file is the config key and the contents of the file is the config value. 
+# The equivalent of config var S3_KEY=8N029N81 is a file with the name S3_KEY and contents 8N029N81.
+# https://devcenter.heroku.com/articles/buildpack-api
+# Get the config variable value for the key WEB_APP
+web_app=`cat $ENV_DIR/WEB_APP`
+echo "### The web app is $web_app"
+echo " "
 
-echo "### ls modules"
+echo "### ls modules - before delete"
 ls $BUILD_DIR/modules
+echo " "
+
+echo "### ls modules/web-apps - before delete"
+ls $BUILD_DIR/modules/web-apps
+echo " "
 
 echo "### Deleting modules and dirs not needed run-time. This to reduce slug size."
+case "$web_app" in
+  "FRONT_OFFICE")
+    rm -rf "$BUILD_DIR/modules/web-apps/glimminge"
+    rm -rf "$BUILD_DIR/modules/web-apps/mandarfen"
+    rm -rf "$BUILD_DIR/modules/web-apps/secrets"
+    rm -rf "$BUILD_DIR/modules/web-apps/sys-admin"
+    rm -rf "$BUILD_DIR/modules/web-apps/www"
+    ;;
+  "GLIMMINGE")
+    rm -rf "$BUILD_DIR/modules/web-apps/front-office"
+    rm -rf "$BUILD_DIR/modules/web-apps/mandarfen"
+    rm -rf "$BUILD_DIR/modules/web-apps/secrets"
+    rm -rf "$BUILD_DIR/modules/web-apps/sys-admin"
+    rm -rf "$BUILD_DIR/modules/web-apps/www"
+    ;;
+  "MANDARFEN")
+    rm -rf "$BUILD_DIR/modules/web-apps/front-office"
+    rm -rf "$BUILD_DIR/modules/web-apps/glimminge"
+    rm -rf "$BUILD_DIR/modules/web-apps/secrets"
+    rm -rf "$BUILD_DIR/modules/web-apps/sys-admin"
+    rm -rf "$BUILD_DIR/modules/web-apps/www"
+    ;;
+  "SECRETS")
+    rm -rf "$BUILD_DIR/modules/web-apps/front-office"
+    rm -rf "$BUILD_DIR/modules/web-apps/glimminge"
+    rm -rf "$BUILD_DIR/modules/web-apps/mandarfen"
+    rm -rf "$BUILD_DIR/modules/web-apps/sys-admin"
+    rm -rf "$BUILD_DIR/modules/web-apps/www"
+    ;;
+  "SYS_ADMIN")
+    rm -rf "$BUILD_DIR/modules/web-apps/front-office"
+    rm -rf "$BUILD_DIR/modules/web-apps/glimminge"
+    rm -rf "$BUILD_DIR/modules/web-apps/mandarfen"
+    rm -rf "$BUILD_DIR/modules/web-apps/secrets"
+    rm -rf "$BUILD_DIR/modules/web-apps/www"
+    ;;
+  "www")
+    rm -rf "$BUILD_DIR/modules/web-apps/front-office"
+    rm -rf "$BUILD_DIR/modules/web-apps/glimminge"
+    rm -rf "$BUILD_DIR/modules/web-apps/mandarfen"
+    rm -rf "$BUILD_DIR/modules/web-apps/secrets"
+    rm -rf "$BUILD_DIR/modules/web-apps/sys-admin"
+    ;;
+  *)
+    echo "Unknown web app $web_app"
+    ;;
+esac
+
 rm -rf "$BUILD_DIR/modules/calculations"
 rm -rf "$BUILD_DIR/modules/common"
 rm -rf "$BUILD_DIR/modules/config"
@@ -37,17 +98,15 @@ rm -rf "$BUILD_DIR/modules/web-apps/www/target/classes/web/java_script_tests"
 # Delete JavaScript test lib
 rm -rf "$BUILD_DIR/modules/web-apps/www/target/classes/web/shared/green_tea"
 echo "### Done deleting files that should not be on production."
+echo " "
 
-
-
-echo "### ls modules"
+echo "### ls modules - after delete"
 ls $BUILD_DIR/modules
+echo " "
 
-echo "### ls modules/web-apps"
+echo "### ls modules/web-apps - after delete"
 ls $BUILD_DIR/modules/web-apps
-echo 
-
-
+echo " "
 
 echo "################################################"
 echo "Running Hejmos build pack - compile script end"
